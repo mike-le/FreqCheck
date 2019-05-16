@@ -1,4 +1,4 @@
-const stem = function stemmer (w){
+const stem = function stemmer (word){
     
     c = "[^aeiou]",          // consonant
     v = "[aeiouy]",          // vowel
@@ -10,7 +10,7 @@ const stem = function stemmer (w){
     mgr1 = "^(" + C + ")?" + V + C + V + C,       // [C]VCVC... is m>1
     vowel_in_stem = "^(" + C + ")?" + v;          // vowel in stem
 
-    return w;
+    return word;
 }
 
 module.exports = { stem }
