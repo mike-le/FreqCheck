@@ -1,0 +1,15 @@
+{
+  "name": "FreqCheck",
+  "version": "1.0.0",
+  "description": "Stemmer",
+  "main": "stemmer.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Michael Le",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  }
+}
