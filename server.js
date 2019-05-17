@@ -1,7 +1,7 @@
 const express = require('express')
+const multer = require('multer')
 const app = express()
-const port = process.env.PORT || 3000
-const sql = require("mssql");
+const port = process.env.PORT || 8080
 const router = express.Router();
 const cors = require('cors'); 
 
@@ -10,20 +10,31 @@ var fs = require("fs");
 
 app.use(cors());
 
+const storage = multer.diskStorage({
+    destination: './files',
+    filename(req, file, cb) {
+      cb(null, `${file.originalname}`);
+    },
+});
+
+const upload = multer({ storage });
+
 router.use(function(req, res, next) {
-    console.log('Something is happening...');
+    console.log('Server initiated...');
     next(); 
 });
 
-router.get('/', function(req, res) {
-    fs.readFile("test.txt", "utf-8", (err, data) => {
+app.post('/files', upload.single('file'), (req, res) => {
+    fs.readFile(req.file.path, "utf-8", (err, data) => {
         if (err) { 
-            console.log(err) 
+            res.send(err); 
         } else {
             res.send(freq.getFreqCount(data));
         }
     })
 });
+
+app.get('/files', (req, res) => res.send('Endpoint test successfull'));
 
 app.use('/', router);
 

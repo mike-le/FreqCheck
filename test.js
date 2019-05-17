@@ -70,7 +70,7 @@ it('-ed with stem ending in double consonants', () => {
 })
 
 it('Irregular -es: leaves', () => {
-  assert.equal(stem("leaves"), "leav")
+  assert.equal(stem("leaves"), "leave")
 })
 
 it('Irregular -es: ties', () => {

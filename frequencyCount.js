@@ -16,7 +16,7 @@ function getFreqCount(text) {
         }
         heap.insert(root, map[root])
     }
-
+    
     return heap.getJSON();
 }
 
