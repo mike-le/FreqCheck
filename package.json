@@ -4,7 +4,12 @@
   "description": "Stemmer",
   "main": "stemmer.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "client-install": "npm install --prefix client",
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "Michael Le",
@@ -14,7 +19,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.0",
     "mssql": "^5.1.0"
   }
 }

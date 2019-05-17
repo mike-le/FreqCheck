@@ -2,6 +2,7 @@ const MinHeap = require('./MinHeap')
 const { stem } = require('./stemmer.js')
 
 function getFreqCount(text) {
+    if(text.length == 0) return;
     wordArr = text.trim().split(' ');
     var heap = new MinHeap(25);
     var map = {};

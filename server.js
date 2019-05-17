@@ -17,8 +17,11 @@ router.use(function(req, res, next) {
 
 router.get('/', function(req, res) {
     fs.readFile("test.txt", "utf-8", (err, data) => {
-        if (err) { console.log(err) }
-        res.send(freq.getFreqCount(data));
+        if (err) { 
+            console.log(err) 
+        } else {
+            res.send(freq.getFreqCount(data));
+        }
     })
 });
 
