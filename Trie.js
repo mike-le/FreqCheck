@@ -1,11 +1,11 @@
-export default class Trie{
-    TrieNode(key) {
-        this.key = key;
-        this.parent = null;
-        this.children = [];
-        this.end = false;
-    }
+function TrieNode(key) {
+    this.key = key;
+    this.parent = null;
+    this.children = [];
+    this.end = false;
+}
 
+class Trie { 
     constructor() {
         this.root = new TrieNode(null);
     }
@@ -15,14 +15,14 @@ export default class Trie{
         var node = this.root;
 
         for(var i=0; i < word.length; i++) {
-            if (!node.children[word[i]]) {
+            if(!node.children[word[i]]) {
                 node.children[word[i]] = new TrieNode(word[i]);
                 node.children[word[i]].parent = node;
             }
         
             node = node.children[word[i]];
 
-            if (i == word.length-1) {
+            if(i == word.length-1) {
                 node.end = true;
             }
         }
@@ -33,7 +33,7 @@ export default class Trie{
         var node = this.root;
 
         for(var i=0; i < word.length; i++) {
-            if (node.children[word[i]]) {
+            if(node.children[word[i]]) {
                 node = node.children[word[i]];
             } else {
                 return false;
@@ -41,5 +41,5 @@ export default class Trie{
         }
         
         return node.end;
-    };
+    }
 }
