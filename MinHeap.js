@@ -13,21 +13,27 @@ class MinHeap {
 
     bubble_down(index) {
         while(true) {
-            var childIndex = this.leftChild(index);
-            var sibIndex = childIndex-1;
+            var leftIndex = this.leftChild(index);
+            var rightIndex = this.rightChild(index);
+            var sibIndex = leftIndex-1;
             
             var node = this.heap[index];
-            var childNode = this.heap[childIndex];
+            var leftNode = this.heap[leftIndex];
+            var rightNode = this.heap[rightIndex];
             var sibNode = this.heap[sibIndex];
 
             var toSwap = null;
             
-            if(node != null && childNode != null && node.count > childNode.count) {
-                toSwap = childIndex;
+            if(node != null && leftNode != null && node.count > leftNode.count) {
+                toSwap = leftIndex;
+            }
+
+            if(toSwap == null && node != null && rightNode != null && node.count > rightNode.count){
+                toSwap = rightIndex;
             }
             
             if(node != null && sibNode != null && node.count > sibNode.count && 
-                (childNode == null || (childNode !== null && sibNode.count < childNode.count))) {
+                (leftNode == null || (leftNode !== null && sibNode.count < leftNode.count))) {
                 toSwap = sibIndex;
             }
             
@@ -54,6 +60,7 @@ class MinHeap {
         var node = new Node(word, count);
         if(this.map[word] != null) {
             this.map[word].count = count;
+            this.heapify()
             return;
         }
         if(this.size >= this.maxSize && node.count < this.heap[1].count) { 
@@ -70,11 +77,12 @@ class MinHeap {
     extractMin() {
         var node = this.heap[1]; 
         this.heap[1] = this.heap[this.size--]; 
+        this.heap.pop();
         this.bubble_down(1); 
         return node; 
     }
 
-    minHeap() { 
+    heapify() { 
         for(var index = Math.floor(this.size/2); index >= 1; index--) { 
             this.bubble_down(index); 
         } 
@@ -118,4 +126,18 @@ class MinHeap {
             }
         } 
     }
+
+    getJSON() {
+        var jsonData = [];
+        while(this.size > 0){
+            var node = this.extractMin();
+            var pair = {};
+            pair[node.word] = node.count;
+            jsonData.push(pair);
+        }
+        jsonData.reverse();
+        return JSON.stringify(jsonData);
+    }
 }
+
+module.exports = MinHeap;
