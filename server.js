@@ -19,11 +19,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.use(function(req, res, next) {
-    console.log('Server initiated...');
-    next(); 
-});
-
 app.post('/files', upload.single('file'), (req, res) => {
     fs.readFile(req.file.path, "utf-8", (err, data) => {
         if (err) { 
@@ -40,6 +35,6 @@ app.use('/', router);
 
 app.listen(port, function () {
     var datetime = new Date();
-    var message = "Server running on Port:- " + port + "Started at :- " + datetime;
+    var message = "Server running on Port: " + port + "\nStarted on: " + datetime;
     console.log(message);
 });

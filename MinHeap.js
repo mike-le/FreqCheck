@@ -63,10 +63,10 @@ class MinHeap {
             this.heapify()
             return;
         }
-        if(this.size >= this.maxSize && node.count < this.heap[1].count) { 
+        if(this.size >= this.maxSize && node.count <= this.heap[1].count) { 
             return; 
         } 
-        if(this.size >= this.maxSize && node.count > this.heap[1].count) {
+        if(this.size >= this.maxSize) {
             this.extractMin();
         } 
         this.heap[++this.size] = node; 
