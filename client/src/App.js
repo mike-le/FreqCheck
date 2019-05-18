@@ -3,7 +3,8 @@ import axios from 'axios';
 import Spinner from './Spinner'
 import Display from './Display'
 import Button from './Button'
-import Cookies from 'universal-cookie';
+import Switch from './Switch';
+import Cookies from 'universal-cookie/cjs';
 import './App.css'
 
 export default class App extends Component {
@@ -11,6 +12,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       uploading: false,
+      stopWord: props.checked || false,
       cache: []
     }
   }
@@ -27,7 +29,8 @@ export default class App extends Component {
     const data = new FormData();
     const file = e.target.files[0];
     data.append('file', file);
-    axios.post('https://freqcheckserver.herokuapp.com/files', data)
+    data.append('stopword', this.state.stopWord)
+    axios.post('https://freqcheckserver.herokuapp.com/', data)
       .then(response => {
         const output = {'name': file.name, 'date': Date.now(), 'data': response.data};
         const resArr = [output];
@@ -36,17 +39,19 @@ export default class App extends Component {
           uploading : false,
           cache : newCache
         };
-        this.setState(newState);
-        console.log(this.state.cache)
-        cookies.set('freqCheckCookie', this.state.cache, 
+        cookies.set('freqCheckCookie', newCache, 
           { path: '/', expires: new Date(Date.now()+2592000)});
+        this.setState(newState);
       }) 
       .catch(error => {console.log(error)} );
   }
+
+  handleChange = name => event => {
+      this.setState({ [name]: event.target.checked });
+  };
   
   render() {
-    const { uploading } = this.state
-    
+    const { uploading, stopWord } = this.state
     const cookies = new Cookies();
     var cookie = cookies.get('freqCheckCookie');
     
@@ -75,7 +80,8 @@ export default class App extends Component {
           Upload text document and find the most frequently used words
         </div>
         <div className='button'>
-          <Button onChange={this.onChange}></Button>
+          <Switch stopWord={stopWord} handleChange={this.handleChange}></Switch> 
+          <Button onChange={this.onChange} containerElement='label'></Button>
         </div>
         <div className='display'>
           {content()}

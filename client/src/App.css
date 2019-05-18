@@ -40,7 +40,6 @@ header {
 .button {
     text-align: center;
     margin: auto;
-    width: 50%;
     margin-top: 100px;
 }
 
@@ -59,4 +58,21 @@ td{
     text-align: center;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.switch{
+    display: inline;
+}
+
+.switch > .MuiFormGroup-root-1{
+    display: inline;
+}
+
+.uploadbutton{
+    display: inline;
+}
+
+.MuiTypography-body1-40{
+    font-weight: bold !important;
+    color: white !important;
 }

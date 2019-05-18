@@ -1,6 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const app = express()
+const path = require('path');
 const port = process.env.PORT || 8080
 const cors = require('cors'); 
 
@@ -23,7 +24,7 @@ app.post('/files', upload.single('file'), (req, res) => {
         if (err) { 
             res.status(400).send(err); 
         } else {
-            res.status(200).send(freq.getFreqCount(data));
+            res.status(200).send(freq.getFreqCount(data, req.body.stopword));
         }
     })
 });
