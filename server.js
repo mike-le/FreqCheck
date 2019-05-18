@@ -2,7 +2,6 @@ const express = require('express')
 const multer = require('multer')
 const app = express()
 const port = process.env.PORT || 8080
-const router = express.Router();
 const cors = require('cors'); 
 
 var freq = require('./frequencyCount.js');
@@ -31,7 +30,7 @@ app.post('/files', upload.single('file'), (req, res) => {
 
 app.get('/files', (req, res) => res.send('Endpoint test successful'));
 
-app.use('/', router);
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.listen(port, function () {
     var datetime = new Date();
