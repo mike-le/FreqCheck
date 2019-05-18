@@ -26,7 +26,7 @@ export default class App extends Component {
 
     const data = new FormData();
     data.append('file', e.target.files[0]);
-    axios.post('http://localhost:8080/files', data)
+    axios.post('https://freqcheckserver.herokuapp.com/files', data)
       .then(response => {
         const test = [response.data];
         const newCache = this.state.cache.concat(test);
@@ -51,7 +51,7 @@ export default class App extends Component {
       switch(true) {
         case uploading:
           return <Spinner/>
-        case cookie.length > 0:
+        case cookie != null && cookie.length > 0:
           return <Display cookie={cookie}/>
         default:
           return
