@@ -68,11 +68,20 @@ td{
     display: inline;
 }
 
+.switch > .jss1{
+    display: inline;
+}
+
 .uploadbutton{
     display: inline;
 }
 
 .MuiTypography-body1-40{
+    font-weight: bold !important;
+    color: white !important;
+}
+
+.jss40{
     font-weight: bold !important;
     color: white !important;
 }

@@ -12,10 +12,16 @@ export default function AnalysisList(props) {
           </tr>
         </thead>
         <tbody>
-            {props.cookie.map((pair, i) => 
+            {props.cookie1.map((pair, i) => 
                 <Analysis 
                 key={i}
                 index={i}
+                analysis={pair}
+            />)}
+            {props.cookie2.map((pair, i) => 
+                <Analysis 
+                key={i}
+                index={i+5}
                 analysis={pair}
             />)}
         </tbody>

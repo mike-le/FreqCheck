@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -47,11 +46,3 @@ IconLabelButtons.propTypes = {
 };
   
 export default withStyles(styles)(IconLabelButtons);
-
-
-/*
-<div className='button'>
-            <label htmlFor='single'></label>
-            <input type='file' id='single' onChange={props.onChange} /> 
-        </div>
-*/
