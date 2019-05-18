@@ -22,14 +22,14 @@ const upload = multer({ storage });
 app.post('/files', upload.single('file'), (req, res) => {
     fs.readFile(req.file.path, "utf-8", (err, data) => {
         if (err) { 
-            res.send(err); 
+            res.status(400).send(err); 
         } else {
-            res.send(freq.getFreqCount(data));
+            res.status(200).send(freq.getFreqCount(data));
         }
     })
 });
 
-app.get('/files', (req, res) => res.send('Endpoint test successfull'));
+app.get('/files', (req, res) => res.send('Endpoint test successful'));
 
 app.use('/', router);
 

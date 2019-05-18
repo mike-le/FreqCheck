@@ -99,13 +99,6 @@ class MinHeap {
     rightChild(index) { 
         return (2 * index) + 1; 
     }
-  
-    isLeaf(index) { 
-        if(index >= Math.floor(this.size/2) && index <= this.size) { 
-            return true; 
-        } 
-        return false; 
-    }
 
     swap(first, second) {
         var temp = this.heap[first];
