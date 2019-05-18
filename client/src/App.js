@@ -11,7 +11,6 @@ export default class App extends Component {
     super(props);
     this.state = {
       uploading: false,
-      wordCount: [],
       cache: []
     }
   }
@@ -33,7 +32,6 @@ export default class App extends Component {
         const newCache = this.state.cache.concat(test);
         const newState = {
           uploading : false,
-          wordCount : response.data,
           cache : newCache
         };
         this.setState(newState);
@@ -44,22 +42,28 @@ export default class App extends Component {
   }
   
   render() {
-    const { uploading, wordCount } = this.state
+    const { uploading } = this.state
+    
+    const cookies = new Cookies();
+    var cookie = cookies.get('freqCheckCookie');
     
     const content = () => {
       switch(true) {
         case uploading:
           return <Spinner/>
-        case wordCount.length > 0:
-          return <Display wordCount={wordCount}/>
+        case cookie.length > 0:
+          return <Display cookie={cookie}/>
         default:
-          return <Button onChange={this.onChange} />
+          return
       }
     }
 
     return (
       <div>
         <div className='buttons'>
+          <Button onChange={this.onChange} />
+        </div>
+        <div className='display'>
           {content()}
         </div>
       </div>

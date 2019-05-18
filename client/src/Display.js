@@ -1,10 +1,12 @@
 import React from 'react'
+import Analysis from './components/analysis'
 
-export default props => 
-    props.wordCount.map((pair, i) =>
-        <div key={i} className='fadein'>
-            <div>
-                {i+1}. {Object.keys(pair)[0]}: {Object.values(pair)[0]} 
-            </div>
+export default function AnalysisList(props) {
+    return (
+        <div>
+        {props.cookie.map((pair, i) => 
+            <Analysis key={i} analysis={pair}/>
+        )}
         </div>
-    )
+    );
+}
