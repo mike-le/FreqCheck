@@ -49,15 +49,22 @@ header {
     margin-right: auto;
 }
 
-.mainTable{
+
+li{
     margin-left: auto;
     margin-right: auto;
+    list-style: none;
+    text-align: center;
 }
 
-td{
+.list{
     text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.list-grid{
+    margin-bottom: 20px !important;
 }
 
 .switch{
@@ -78,10 +85,23 @@ td{
 
 .MuiTypography-body1-40{
     font-weight: bold !important;
-    color: white !important;
 }
 
 .jss40{
     font-weight: bold !important;
     color: white !important;
+}
+
+.MuiList-padding-207{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.MuiList-padding-730{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.MuiListItem-container-211{
+    box-shadow: 1px 1px 1px 1px #2a3d56 !important;
 }
