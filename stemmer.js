@@ -18,8 +18,12 @@ const stem = function stemmer (word){
     // Check for plurals (-es or -s suffixes)
     regex_es = /^(.+?)(ss|i)es$/;
     regex_s = /^(.+?)([^s])s$/;
-    if (regex_es.test(word)) { word = word.replace(regex_es,"$1$2"); }
-    else if (regex_s.test(word)) {	word = word.replace(regex_s,"$1$2"); }
+    regex_ous = /^(.+?)ous$/;
+    if (regex_es.test(word)) { 
+        word = word.replace(regex_es,"$1$2"); 
+    } else if (regex_s.test(word) && !regex_ous.test(word)) {	
+        word = word.replace(regex_s,"$1$2"); 
+    }
 
     // Check for past participles (-eed, -ed, and -ing suffixes)
     regex_eed = /^(.+?)eed$/;

@@ -21,6 +21,10 @@ it('basic -eed', () => {
   assert.equal(stem("agreed"), "agree")
 })
 
+it('basic -ous', () => {
+  assert.equal(stem("delicious"), "delicious")
+})
+
 it('-ies with stem ending in -y', () => {
   assert.equal(stem("ponies"), "pony")
 })
