@@ -65,7 +65,6 @@ export default class App extends Component {
           { path: '/', expires: new Date(Date.now()+2592000)});
         cookies.set('freqCheckCookie2', secondcachecopy, 
           { path: '/', expires: new Date(Date.now()+2592000)});
-        
         this.setState(newState);
       }) 
       .catch(error => {console.log(error)} );
