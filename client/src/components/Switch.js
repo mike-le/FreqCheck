@@ -2,10 +2,10 @@ import React from 'react';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import green from '@material-ui/core/colors/green';
+import grey from '@material-ui/core/colors/grey';
 
 const styles = theme => ({
     colorSwitchBase: {
@@ -19,6 +19,10 @@ const styles = theme => ({
     },
     colorBar: {},
     colorChecked: {},
+    label: {
+        color: grey[50],
+        fontWeight: 600
+    }
 });
 
 function SwitchLabels(props){
@@ -37,10 +41,12 @@ function SwitchLabels(props){
                     switchBase: classes.colorSwitchBase,
                     checked: classes.colorChecked,
                     bar: classes.colorBar,
+                    root: classes.switch
                 }}
             />
-            }
-            label="Stop Words"
+            }     
+            label="Stop Word"   
+            classes={{ label: classes.label}}
         />
         </FormGroup>
         </div>

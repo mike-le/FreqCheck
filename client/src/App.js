@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import Spinner from './Spinner'
-import Display from './Display'
-import Button from './Button'
-import Switch from './Switch';
+import Spinner from './components/Spinner'
+import Display from './components/Display'
+import Button from './components/Button'
+import Switch from './components/Switch';
 import Cookies from 'universal-cookie/cjs';
 import './App.css'
 
@@ -40,7 +40,11 @@ export default class App extends Component {
     data.append('stopword', this.state.stopWord)
     axios.post('https://freqcheckserver.herokuapp.com/files', data)
       .then(response => {
-        const output = {'name': file.name, 'date': Date.now(), 'data': response.data};
+        const output = {
+          'name': file.name, 
+          'date': Date.now(),
+          'stopword': this.state.stopWord, 
+          'data': response.data};
         const resArr = [output];
 
         var firstcachecopy = this.state.firstcache.concat([]);

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "test": "mocha",
+    "test": "cd tests && mocha",
     "client-install": "npm install --prefix client",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "mssql": "^5.1.0",
     "multer": "^1.4.1"

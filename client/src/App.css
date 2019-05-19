@@ -71,11 +71,19 @@ li{
     display: inline;
 }
 
-.switch > .MuiFormGroup-root-4{
+.switch > .MuiFormGroup-root-5{
     display: inline;
 }
 
 .switch > .jss1{
+    display: inline;
+}
+
+.switch > .jss4{
+    display: inline;
+}
+
+.switch > .jss5{
     display: inline;
 }
 
@@ -89,7 +97,12 @@ li{
 
 .jss40{
     font-weight: bold !important;
-    color: white !important;
+    /*color: white !important;*/
+}
+
+.jss43{
+    font-weight: bold !important;
+    /*color: white !important;*/
 }
 
 .MuiList-padding-207{
@@ -98,6 +111,11 @@ li{
 }
 
 .jss214{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.jss212{
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
@@ -119,6 +137,11 @@ li{
     font-style: bold;
     text-align: center;
     font-size: 20px;
+}
+
+.modalsubHeader{
+    text-align: center;
+    font-size: 14px;
     margin-bottom: 10px;
 }
 
@@ -134,5 +157,10 @@ li{
 
 .countCol{
     padding-left: 80px;
+}
+
+.spinner{
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 

@@ -1,4 +1,4 @@
-const MinHeap = require('./MinHeap')
+const MinHeap = require('./datastructures/MinHeap')
 const { stem } = require('./stemmer')
 const { stopwords } = require('./stopwords')
 

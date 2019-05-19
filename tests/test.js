@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { stem } = require('./stemmer.js')
+const { stem } = require('../stemmer.js')
 
 it('basic -ing', () => {
   assert.equal(stem("testing"), "test")

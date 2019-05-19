@@ -87,6 +87,9 @@ class InteractiveList extends React.Component {
                                 <div className="modalHeader">
                                     {this.props.analysis['name']}
                                 </div>
+                                <div className="modalsubHeader">
+                                    ({this.props.analysis['stopword'] ? "Stop words filtered" : "Stop words included" })
+                                </div>
                                 <table className="mainTable">
                                     <thead className='thead-dark'>
                                         <tr>

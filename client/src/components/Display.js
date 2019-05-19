@@ -1,5 +1,5 @@
 import React from 'react'
-import Analysis from './components/analysis'
+import Analysis from './Analysis'
 
 export default function AnalysisList(props) {
     return (

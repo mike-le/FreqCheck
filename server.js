@@ -29,8 +29,6 @@ app.post('/files', upload.single('file'), (req, res) => {
     })
 });
 
-app.get('/files', (req, res) => res.send('Endpoint test successful'));
-
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.listen(port, function () {
