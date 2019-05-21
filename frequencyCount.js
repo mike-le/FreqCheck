@@ -6,6 +6,7 @@ const MAX_SIZE = 25;
 
 function getFreqCount(text, filterstopWords) {
     if(text.length == 0) return;
+    text = text.replace(/[\r\n]+/g," ");
     wordArr = text.trim().toLowerCase().split(' ');
     var heap = new MinHeap(MAX_SIZE);
     var map = {};
