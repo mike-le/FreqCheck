@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import DeleteIcon from '@material-ui/icons/Delete';
 import moment from 'moment';
 import ModalContent from './ModalContent';
+import Cookies from 'universal-cookie/cjs';
 
 const styles = theme => ({
     demo: {
@@ -22,7 +23,8 @@ class InteractiveList extends React.Component {
     state = {
         dense: false,
         secondary: false,
-        open: false
+        open: false,
+        deleted: false
     };
 
     handleOpen = () => {
@@ -31,6 +33,26 @@ class InteractiveList extends React.Component {
     
     handleClose = () => {
         this.setState({ open: false });
+    };
+
+    delete = () => {
+        const cookies = new Cookies();
+        const cookieid = this.props.cookie;
+        const itemid = this.props.id;
+        var targetcookie = cookies.get('freqCheckCookie'+cookieid);
+        var cookie2 = cookies.get('freqCheckCookie2');
+
+        if(targetcookie != null){
+            if(cookieid === 1 && cookie2.length > 0){
+                targetcookie.splice(targetcookie.length-itemid-1, 1);
+                targetcookie.push(cookie2.shift());
+                cookies.set('freqCheckCookie2', cookie2);
+            } else {
+                targetcookie.splice(targetcookie.length-itemid-1, 1);
+            }
+            
+            cookies.set('freqCheckCookie'+cookieid, targetcookie);
+        }
     };
 
     render() {
@@ -61,7 +83,9 @@ class InteractiveList extends React.Component {
                         secondary={ moment(this.props.analysis['date']).fromNow() }
                         />
                         <ListItemSecondaryAction>
-                        <IconButton aria-label="Delete">
+                        <IconButton     
+                            aria-label="Delete" 
+                            onClick={this.delete.bind()}>
                             <DeleteIcon/>
                         </IconButton>
                         </ListItemSecondaryAction>

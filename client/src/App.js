@@ -40,6 +40,9 @@ export default class App extends Component {
     data.append('stopword', this.state.stopWord)
     axios.post('https://freqcheckserver.herokuapp.com/files', data)
       .then(response => {
+        if(response.data.break){
+          alert('File was empty or had no valid words');
+        }
         const output = {
           'name': file.name, 
           'date': Date.now(),
@@ -75,7 +78,7 @@ export default class App extends Component {
   }
 
   handleChange = name => event => {
-      this.setState({ [name]: event.target.checked });
+    this.setState({ [name]: event.target.checked });
   };
   
   render() {
