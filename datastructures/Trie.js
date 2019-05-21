@@ -3,6 +3,7 @@ function TrieNode(key) {
     this.parent = null;
     this.children = [];
     this.end = false;
+    this.count = 0;
 }
 
 class Trie { 
@@ -24,6 +25,7 @@ class Trie {
 
             if(i == word.length-1) {
                 node.end = true;
+                node.count = 1;
             }
         }
     };
@@ -36,10 +38,11 @@ class Trie {
             if(node.children[word[i]]) {
                 node = node.children[word[i]];
             } else {
-                return false;
+                return null;
             }  
         }
-        
-        return node.end;
+        return node;
     }
 }
+
+module.exports = Trie;

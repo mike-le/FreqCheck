@@ -126,7 +126,7 @@ class MinHeap {
             var node = this.extractMin();
             var pair = {};
             pair[node.word] = node.count;
-            jsonData.push(pair);
+            if(node.count > 0) jsonData.push(pair);
         }
         jsonData.reverse();
         return JSON.stringify(jsonData);

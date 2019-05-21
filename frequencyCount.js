@@ -16,31 +16,27 @@ function getFreqCount(text, filterstopWords) {
             if(!stopwords.includes(word)) {
                 word = word.replace(/[^a-zA-Z]/g, "");
                 if(!stopwords.includes(word) && word.length > 0) {
-                    var root = stem(word);
-                    if(map[root] != null) {
-                        map[root]++;
-                    } else {
-                        map[root] = 1;
-                    }
-                    heap.insert(root, map[root])
+                    processWord(stem(word), heap, map);
                 }
             }
         } else {
             word = word.replace(/[^a-zA-Z]/g, "");
             if(word.length > 0) {
-                var root = stem(word);
-                if(map[root] != null) {
-                    map[root]++;
-                } else {
-                    map[root] = 1;
-                }
-                heap.insert(root, map[root])
+                processWord(stem(word), heap, map);
             }
         }
-        
     }
     
     return heap.getJSON();
+}
+
+function processWord(root, heap, map){
+    if(map[root] != null) {
+        map[root]++;
+    } else {
+        map[root] = 1;
+    }
+    heap.insert(root, map[root])
 }
 
 module.exports = {
