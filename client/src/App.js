@@ -36,6 +36,7 @@ export default class App extends Component {
 
     const data = new FormData();
     const file = e.target.files[0];
+    e.target.value = '';
     data.append('file', file);
     data.append('stopword', this.state.stopWord)
     axios.post('https://freqcheckserver.herokuapp.com/files', data)
