@@ -38,42 +38,44 @@ export default class App extends Component {
     const file = e.target.files[0];
     e.target.value = '';
     data.append('file', file);
-    data.append('stopword', this.state.stopWord)
+    data.append('stopword', this.state.stopWord);
     axios.post('https://freqcheckserver.herokuapp.com/files', data)
       .then(response => {
-        if(response.data.break){
-          alert('File was empty or had no valid words');
-        }
-        const output = {
-          'name': file.name, 
-          'date': Date.now(),
-          'stopword': this.state.stopWord, 
-          'data': response.data};
-        const resArr = [output];
-
-        var firstcachecopy = this.state.firstcache.concat([]);
-        var secondcachecopy = this.state.secondcache.concat([]);
-        if(ck1len < 5) {
-          firstcachecopy = this.state.firstcache.concat(resArr);
-        } else if (ck2len < 5) {
-          secondcachecopy =  this.state.secondcache.concat(resArr);
+        if(Object.keys(response.data).length> 0){
+          const output = {
+            'name': file.name, 
+            'date': Date.now(),
+            'stopword': this.state.stopWord, 
+            'data': response.data};
+          const resArr = [output];
+  
+          var firstcachecopy = this.state.firstcache.concat([]);
+          var secondcachecopy = this.state.secondcache.concat([]);
+          if(ck1len < 5) {
+            firstcachecopy = this.state.firstcache.concat(resArr);
+          } else if (ck2len < 5) {
+            secondcachecopy =  this.state.secondcache.concat(resArr);
+          } else {
+            firstcachecopy.shift();
+            firstcachecopy.push(secondcachecopy.shift());
+            secondcachecopy = secondcachecopy.concat(resArr);
+          }
+  
+          const newState = {
+            uploading : false,
+            firstcache : firstcachecopy,
+            secondcache : secondcachecopy
+          };
+          
+          cookies.set('freqCheckCookie1', firstcachecopy, 
+            { path: '/', expires: new Date(Date.now()+2592000)});
+          cookies.set('freqCheckCookie2', secondcachecopy, 
+            { path: '/', expires: new Date(Date.now()+2592000)});
+          this.setState(newState);  
         } else {
-          firstcachecopy.shift();
-          firstcachecopy.push(secondcachecopy.shift());
-          secondcachecopy = secondcachecopy.concat(resArr);
-        }
-
-        const newState = {
-          uploading : false,
-          firstcache : firstcachecopy,
-          secondcache : secondcachecopy
-        };
-        
-        cookies.set('freqCheckCookie1', firstcachecopy, 
-          { path: '/', expires: new Date(Date.now()+2592000)});
-        cookies.set('freqCheckCookie2', secondcachecopy, 
-          { path: '/', expires: new Date(Date.now()+2592000)});
-        this.setState(newState);
+          alert("File empty or contains no words");
+          this.setState({ uploading: false });
+        } 
       }) 
       .catch(error => {console.log(error)} );
   }
