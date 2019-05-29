@@ -60,7 +60,7 @@ class ModalContent extends React.Component {
                         </thead>
                         <tbody>
                             {this.props.analysis['data'].map((pair, i) => 
-                                <tr key={i+1}>
+                                <tr key={ i+1 }>
                                     <td>{ i+1 }.</td>
                                     <td className="nameCol">{ Object.keys(pair)[0] }</td>
                                     <td className="countCol">{ Object.values(pair)[0] }</td>

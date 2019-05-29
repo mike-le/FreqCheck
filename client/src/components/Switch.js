@@ -46,7 +46,7 @@ function SwitchLabels(props){
             />
             }     
             label="Stop Word"   
-            classes={{ label: classes.label}}
+            classes={{ label: classes.label }}
         />
         </FormGroup>
         </div>
