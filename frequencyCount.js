@@ -16,13 +16,13 @@ function getFreqCount(text, filterstopWords) {
         if(filterstopWords == 'true'){
             if(!stopwords.includes(word)) {
                 word = word.replace(/[^a-zA-Z]/g, "");
-                if(!stopwords.includes(word) && word.length > 0) {
+                if(!stopwords.includes(word) && word.length > 1) {
                     processWord(stem(word), heap, map);
                 }
             }
         } else {
             word = word.replace(/[^a-zA-Z]/g, "");
-            if(word.length > 0) {
+            if(word.length > 1) {
                 processWord(stem(word), heap, map);
             }
         }
@@ -32,11 +32,7 @@ function getFreqCount(text, filterstopWords) {
 }
 
 function processWord(root, heap, map){
-    if(map[root] != null) {
-        map[root]++;
-    } else {
-        map[root] = 1;
-    }
+    map[root] = map[root] != null ? map[root]+1 : 1;
     heap.insert(root, map[root])
 }
 
