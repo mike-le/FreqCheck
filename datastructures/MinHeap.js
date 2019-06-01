@@ -106,20 +106,6 @@ class MinHeap {
         this.heap[second] = temp;
     }
 
-    print() { 
-        for (var i = 1; i <= this.size / 2; i++) { 
-            if(this.heap[i] != null) {
-                console.log("Current : " + this.heap[i].word + " " + this.heap[i].count);
-            }
-            if(this.heap[2*i] != null) {
-                console.log("Left : " + this.heap[2*i].word + " " + this.heap[2*i].count);
-            }
-            if(this.heap[2*i+1] != null) {
-                console.log("Right : " + this.heap[2*i+1].word + " " + this.heap[2*i+1].count);
-            }
-        } 
-    }
-
     getJSON() {
         var jsonData = [];
         while(this.size > 0){

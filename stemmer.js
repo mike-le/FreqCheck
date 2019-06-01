@@ -1,4 +1,4 @@
-const stem = function stemmer (word){
+const stem = function stemmer (word) {
     
     c = "[^aeiou]",          // consonant
     v = "[aeiouy]",          // vowel

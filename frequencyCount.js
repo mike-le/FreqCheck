@@ -13,7 +13,7 @@ function getFreqCount(text, filterstopWords) {
 
     for(var i=0; i<wordArr.length; i++) {
         var word = wordArr[i];
-        if(filterstopWords == 'true'){
+        if(filterstopWords == 'true') {
             if(!stopwords.includes(word)) {
                 word = word.replace(/[^a-zA-Z]/g, "");
                 if(!stopwords.includes(word) && word.length > 1) {
@@ -36,6 +36,4 @@ function processWord(root, heap, map){
     heap.insert(root, map[root])
 }
 
-module.exports = {
-    getFreqCount: getFreqCount
-};
+module.exports = { getFreqCount: getFreqCount }
