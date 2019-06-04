@@ -8,6 +8,8 @@ const cors = require('cors');
 var freq = require('./frequencyCount.js');
 var fs = require("fs");
 
+app.use(cors());
+
 const storage = multer.diskStorage({
     destination: './files',
     filename(req, file, cb) {
@@ -28,7 +30,6 @@ app.post('/files', upload.single('file'), (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'client/build')));
-app.use(cors());
 
 app.listen(port, function () {
     var datetime = new Date();

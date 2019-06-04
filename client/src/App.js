@@ -22,11 +22,14 @@ export default class App extends Component {
     const cookies = new Cookies();
     const cookie1 = cookies.get('freqCheckCookie1');
     const cookie2 = cookies.get('freqCheckCookie2');
+    var cklen = 0, ck2len = 0;
     if(cookie1 != null && cookie1.length > 0) {
       this.setState({ firstcache : cookie1 });
+      cklen = cookie1.length;
     } 
     if(cookie2 != null && cookie2.length > 0) {
       this.setState({ secondcache : cookie2 });
+      ck2len = cookie2.length;
     } 
 
     this.setState({ uploading: true })
@@ -49,9 +52,9 @@ export default class App extends Component {
   
           var firstcachecopy = this.state.firstcache.concat([]);
           var secondcachecopy = this.state.secondcache.concat([]);
-          if(cookie1.length < 5) {
+          if(cklen < 5) {
             firstcachecopy = this.state.firstcache.concat(resArr);
-          } else if (cookie2.length < 5) {
+          } else if (ck2len < 5) {
             secondcachecopy =  this.state.secondcache.concat(resArr);
           } else {
             firstcachecopy.shift();
