@@ -36,8 +36,6 @@ export default class App extends Component {
 
     const data = new FormData();
     const file = e.target.files[0];
-
-    if(file.name.split('.').pop() === "txt"){
       e.target.value = '';
       data.append('file', file);
       data.append('stopword', this.state.stopWord);
@@ -77,14 +75,12 @@ export default class App extends Component {
             this.setState(newState);  
           } else {
             alert("File empty or contains no words");
-            
           } 
         }) 
-        .catch( error => {console.log(error)} );
-    } else {
-      this.setState({ uploading: false });
-      alert("Invalid file format")
-    }
+        .catch( error => {
+          this.setState({ uploading: false });
+          alert(error.message);
+        });
   }
 
   handleChange = name => event => {

@@ -21,8 +21,10 @@ const upload = multer({ storage });
 
 app.post('/files', upload.single('file'), (req, res) => {
     fs.readFile(req.file.path, "utf-8", (err, data) => {
-        if (err) { 
-            res.status(400).send(err); 
+        if(err){
+            res.status(400).send(err);
+        } else if(req.file.filename.split('.').pop() !== "txt"){
+            res.status(400).send("Invalid file format");
         } else {
             res.status(200).send(freq.getFreqCount(data, req.body.stopword));
         }
