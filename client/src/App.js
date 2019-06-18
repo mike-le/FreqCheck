@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 import Spinner from './components/Spinner'
 import Display from './components/Display'
 import Button from './components/Button'
-import Switch from './components/Switch';
-import Cookies from 'universal-cookie/cjs';
+import Switch from './components/Switch'
+import Header from './components/Header'
+import Cookies from 'universal-cookie/cjs'
 import './App.css'
 
 export default class App extends Component {
@@ -106,17 +107,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <header className = 'header'>
-          <div className="container">          
-            FreqCheck
-          </div>
-        </header>
-        <div className='title'>
-          Word Frequency Counter
-        </div>
-        <div className='subtitle'>
-          Upload text document and find the most frequently used words
-        </div>
+        <Header></Header>
         <div className='button'>
           <Switch stopWord={stopWord} handleChange={this.handleChange}></Switch> 
           <Button onChange={this.onChange} containerElement='label'></Button>
