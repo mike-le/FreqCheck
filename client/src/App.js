@@ -40,7 +40,7 @@ export default class App extends Component {
       e.target.value = '';
       data.append('file', file);
       data.append('stopword', this.state.stopWord);
-      axios.post('https://freqcheckserver.herokuapp.com/files', data)
+      axios.post('https://freqcheck.herokuapp.com/files', data)
         .then(response => {
           if(Object.keys(response.data).length > 0){
             const output = {

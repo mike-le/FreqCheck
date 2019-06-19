@@ -5,7 +5,7 @@
 FreqCheck is a Express/React single-page web application where users can perform simple frequency analysis on submitted text documents.
 
 ## Application Link
-• https://freqcheckserver.herokuapp.com/  
+• https://freqcheck.herokuapp.com/  
 
 ## Features  
 • Upload text documents and display the top 25 most used words  
