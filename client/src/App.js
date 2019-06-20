@@ -34,29 +34,30 @@ export default class App extends Component {
     } 
 
     this.setState({ uploading: true })
+    const { stopWord, firstcache, secondcache } = this.state
 
     const data = new FormData();
     const file = e.target.files[0];
       e.target.value = '';
       data.append('file', file);
-      data.append('stopword', this.state.stopWord);
+      data.append('stopword', stopWord);
       axios.post('https://freqcheck.herokuapp.com/files', data)
         .then(response => {
           if(Object.keys(response.data).length > 0){
             const output = {
               'name': file.name, 
               'date': Date.now(),
-              'stopword': this.state.stopWord, 
+              'stopword': stopWord, 
               'data': response.data
             };
             const resArr = [output];
     
-            var firstcachecopy = this.state.firstcache.concat([]);
-            var secondcachecopy = this.state.secondcache.concat([]);
+            var firstcachecopy = firstcache.concat([]);
+            var secondcachecopy = secondcache.concat([]);
             if(cklen < 5) {
-              firstcachecopy = this.state.firstcache.concat(resArr);
+              firstcachecopy = firstcache.concat(resArr);
             } else if (ck2len < 5) {
-              secondcachecopy =  this.state.secondcache.concat(resArr);
+              secondcachecopy =  secondcache.concat(resArr);
             } else {
               firstcachecopy.shift();
               firstcachecopy.push(secondcachecopy.shift());
