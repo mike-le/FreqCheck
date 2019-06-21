@@ -13,9 +13,9 @@ class Trie {
 
     // inserts a word into the trie at O(k)
     add(word) {
-        var node = this.root;
+        let node = this.root;
 
-        for(var i=0; i < word.length; i++) {
+        for(let i=0; i < word.length; i++) {
             if(!node.children[word[i]]) {
                 node.children[word[i]] = new TrieNode(word[i]);
                 node.children[word[i]].parent = node;
@@ -32,9 +32,9 @@ class Trie {
 
     // Check if trie contains word at O(k)
     contains(word) {
-        var node = this.root;
+        let node = this.root;
 
-        for(var i=0; i < word.length; i++) {
+        for(let i=0; i < word.length; i++) {
             if(node.children[word[i]]) {
                 node = node.children[word[i]];
             } else {

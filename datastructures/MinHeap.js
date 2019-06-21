@@ -13,16 +13,16 @@ class MinHeap {
 
     bubble_down(index) {
         while(true) {
-            var leftIndex = this.leftChild(index);
-            var rightIndex = this.rightChild(index);
-            var sibIndex = leftIndex-1;
+            let leftIndex = this.leftChild(index);
+            let rightIndex = this.rightChild(index);
+            let sibIndex = leftIndex-1;
             
-            var node = this.heap[index];
-            var leftNode = this.heap[leftIndex];
-            var rightNode = this.heap[rightIndex];
-            var sibNode = this.heap[sibIndex];
+            let node = this.heap[index];
+            let leftNode = this.heap[leftIndex];
+            let rightNode = this.heap[rightIndex];
+            let sibNode = this.heap[sibIndex];
 
-            var toSwap = null;
+            let toSwap = null;
             
             if(node != null && leftNode != null && node.count > leftNode.count) {
                 toSwap = leftIndex;
@@ -48,7 +48,7 @@ class MinHeap {
 
     bubble_up(index) {
         while(index > 1) {
-            var parent = this.parent(index);
+            let parent = this.parent(index);
             if(this.heap[parent] != null && this.heap[parent].count > this.heap[index].count) {
                 this.swap(index, parent);
             }
@@ -57,7 +57,7 @@ class MinHeap {
     }
       
     insert(word, count) {
-        var node = new Node(word, count);
+        let node = new Node(word, count);
         if(this.map[word] != null) {
             this.map[word].count = count;
             this.heapify()
@@ -75,7 +75,7 @@ class MinHeap {
     }
 
     extractMin() {
-        var node = this.heap[1]; 
+        let node = this.heap[1]; 
         this.heap[1] = this.heap[this.size--]; 
         this.heap.pop();
         this.bubble_down(1); 
@@ -83,7 +83,7 @@ class MinHeap {
     }
 
     heapify() { 
-        for(var index = Math.floor(this.size/2); index >= 1; index--) { 
+        for(let index = Math.floor(this.size/2); index >= 1; index--) { 
             this.bubble_down(index); 
         } 
     }
@@ -101,16 +101,16 @@ class MinHeap {
     }
 
     swap(first, second) {
-        var temp = this.heap[first];
+        let temp = this.heap[first];
         this.heap[first] = this.heap[second];
         this.heap[second] = temp;
     }
 
     getJSON() {
-        var jsonData = [];
+        let jsonData = [];
         while(this.size > 0){
-            var node = this.extractMin();
-            var pair = {};
+            let node = this.extractMin();
+            let pair = {};
             pair[node.word] = node.count;
             if(node.count > 0) jsonData.push(pair);
         }

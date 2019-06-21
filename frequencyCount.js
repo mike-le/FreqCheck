@@ -8,11 +8,11 @@ function getFreqCount(text, filterstopWords) {
     if(text.length == 0) return;
     text = text.replace(/[\r\n]+/g," ");
     wordArr = text.trim().toLowerCase().split(' ');
-    var heap = new MinHeap(MAX_SIZE);
-    var map = {};
+    let heap = new MinHeap(MAX_SIZE);
+    let map = {};
 
-    for(var i=0; i<wordArr.length; i++) {
-        var word = wordArr[i];
+    for(let i=0; i<wordArr.length; i++) {
+        let word = wordArr[i];
         if(filterstopWords == 'true') {
             if(!stopwords.includes(word)) {
                 word = word.replace(/[^a-zA-Z]/g, "");

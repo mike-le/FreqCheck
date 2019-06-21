@@ -33,7 +33,7 @@ app.post('/files', upload.single('file'), (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.listen(port, function () {
+app.listen(port, () => {
     var datetime = new Date();
     var message = "Server running on Port: " + port + "\nStarted on: " + datetime;
     console.log(message);
