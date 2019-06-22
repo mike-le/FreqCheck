@@ -39,8 +39,8 @@ class InteractiveList extends React.Component {
         const cookies = new Cookies();
         const cookieid = this.props.cookie;
         const itemid = this.props.id;
-        var targetcookie = cookies.get('freqCheckCookie'+cookieid);
-        var cookie2 = cookies.get('freqCheckCookie2');
+        let targetcookie = cookies.get('freqCheckCookie'+cookieid);
+        let cookie2 = cookies.get('freqCheckCookie2');
 
         if(targetcookie != null){
             if(cookieid === 1 && cookie2.length > 0){
