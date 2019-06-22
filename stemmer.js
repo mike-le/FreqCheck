@@ -10,7 +10,7 @@ const stem = function stemmer (word) {
     mgr1 = new RegExp("^(" + C + ")?" + V + C + V + C);            // [C]VCVC...[V] is m>1
     vowel_in_stem = new RegExp("^(" + C + ")?" + v);               // vowel in stem
 
-    var stem, regex;
+    let stem, regex;
 
     // No suffix exists
     if (word.length < 3) { return word; }
@@ -58,7 +58,7 @@ const stem = function stemmer (word) {
     }
 
     // Check for extra -l on stem word with m > 1
-    var regex_ll = /ll$/;
+    let regex_ll = /ll$/;
     if (regex_ll.test(word) && mgr1.test(word)) {
         regex = /.$/;
         word = word.replace(regex,"");

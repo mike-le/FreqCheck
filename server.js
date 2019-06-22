@@ -2,11 +2,10 @@ const express = require('express')
 const multer = require('multer')
 const app = express()
 const path = require('path');
-const port = process.env.PORT || 8080
 const cors = require('cors'); 
-
-var freq = require('./frequencyCount.js');
-var fs = require("fs");
+const freq = require('./frequencyCount.js');
+const fs = require("fs");
+const port = process.env.PORT || 8080
 
 app.use(cors());
 
@@ -34,7 +33,7 @@ app.post('/files', upload.single('file'), (req, res) => {
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.listen(port, () => {
-    var datetime = new Date();
-    var message = "Server running on Port: " + port + "\nStarted on: " + datetime;
+    let datetime = new Date();
+    let message = "Server running on Port: " + port + "\nStarted on: " + datetime;
     console.log(message);
 });

@@ -23,7 +23,7 @@ export default class App extends Component {
     const cookies = new Cookies();
     const cookie1 = cookies.get('freqCheckCookie1');
     const cookie2 = cookies.get('freqCheckCookie2');
-    var cklen = 0, ck2len = 0;
+    let cklen = 0, ck2len = 0;
     if(cookie1 != null && cookie1.length > 0) {
       this.setState({ firstcache : cookie1 });
       cklen = cookie1.length;
@@ -52,8 +52,8 @@ export default class App extends Component {
             };
             const resArr = [output];
     
-            var firstcachecopy = firstcache.concat([]);
-            var secondcachecopy = secondcache.concat([]);
+            let firstcachecopy = firstcache.concat([]);
+            let secondcachecopy = secondcache.concat([]);
             if(cklen < 5) {
               firstcachecopy = firstcache.concat(resArr);
             } else if (ck2len < 5) {
@@ -92,8 +92,8 @@ export default class App extends Component {
   render() {
     const { uploading, stopWord } = this.state
     const cookies = new Cookies();
-    var cookie1 = cookies.get('freqCheckCookie1');
-    var cookie2 = cookies.get('freqCheckCookie2');
+    let cookie1 = cookies.get('freqCheckCookie1');
+    let cookie2 = cookies.get('freqCheckCookie2');
     
     const content = () => {
       switch(true) {
