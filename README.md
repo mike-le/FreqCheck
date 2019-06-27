@@ -2,7 +2,7 @@
 [![CircleCI](https://circleci.com/gh/mike-le/FreqCheck.svg?style=shield)](https://circleci.com/gh/mike-le/FreqCheck)
 
 ## Description
-FreqCheck is a Express/React single-page web application where users can perform simple frequency analysis on submitted text documents.
+FreqCheck is a Node/React single-page web application where users can perform simple frequency analysis on submitted text documents.
 
 ## Application Link
 • https://freqcheck.herokuapp.com/  
@@ -17,6 +17,7 @@ FreqCheck is a Express/React single-page web application where users can perform
 ## Technologies  
 
 ### Frameworks
+• Node.js  
 • Express.js  
 • React.js  
 • Mocha   
