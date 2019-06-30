@@ -1,11 +1,12 @@
 const express = require('express')
 const multer = require('multer')
-const app = express()
 const path = require('path');
 const cors = require('cors'); 
 const freq = require('./frequencyCount.js');
 const fs = require("fs");
 const port = process.env.PORT || 8080
+
+const app = express()
 
 app.use(cors());
 
